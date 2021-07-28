@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+}
+
+
+subprojects {
+    apply plugin: 'java'
+
+    group 'org.example'
+    version '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+project(":application") {
+    jar { enabled = true }
+
+    dependencies {
+        compileOnly project(":domain")
+    }
+}
+
+project(":data-rds") {
+    jar { enabled = true }
+
+    dependencies {
+        compileOnly project(":domain")
+    }
+}
+
+project(":domain") {
+    jar { enabled = true }
+}
