@@ -27,18 +27,45 @@ project(":application") {
     jar { enabled = true }
 
     dependencies {
-        compileOnly project(":domain")
+        implementation project(":domain")
+        implementation project(":read-model")
+
+        implementation project(":data:data-rds")
+        implementation project(":data:data-es")
+        implementation project(":data:data-mongo")
     }
 }
 
-project(":data-rds") {
+project(":read-model") {
     jar { enabled = true }
-
     dependencies {
-        compileOnly project(":domain")
+        implementation project(":domain")
     }
 }
 
 project(":domain") {
     jar { enabled = true }
+}
+
+project(":data:data-rds") {
+    jar { enabled = true }
+
+    dependencies {
+        implementation project(":domain")
+        implementation project(":read-model")
+    }
+}
+
+project(":data:data-es") {
+    jar { enabled = true }
+    dependencies {
+        implementation project(":read-model")
+    }
+}
+
+project(":data:data-mongo") {
+    jar { enabled = true }
+    dependencies {
+        implementation project(":read-model")
+    }
 }

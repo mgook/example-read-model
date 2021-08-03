@@ -1,5 +1,10 @@
-rootProject.name = 'dependency-test'
+rootProject.name = 'example-read-model'
 
 include 'application'
 include 'domain'
-include 'data-rds'
+include 'data:data-rds'
+include 'data:data-es'
+include 'data:data-mongo'
+
+include 'read-model:service'
+include 'read-model:core'
